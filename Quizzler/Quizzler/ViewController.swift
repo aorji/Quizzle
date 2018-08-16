@@ -10,15 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var numberOfQuestionLabel: UILabel!
     @IBOutlet weak var levelBar: UIView!
+    @IBOutlet weak var questionView: UITextView!
     
     var questionNumber: Int = 0
     var score: Int = 0
     let questionList = QuestionCollection()
     var senderAnswer: Bool = false
+    
+    var numberList: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,12 +70,12 @@ class ViewController: UIViewController {
     func updateLabels() {
         scoreLabel.text = "Score: \(score)"
         numberOfQuestionLabel.text = "\(questionNumber) / 13"
-        questionLabel.text = questionList.list[questionNumber - 1].questionText
+        questionView.text = questionList.list[questionNumber - 1].questionText
         levelBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber)
     }
     
     func checkAnswer() {
-        
+
         if senderAnswer == questionList.list[questionNumber - 1].questionAnswer {
             ProgressHUD.showSuccess("Correct")
             score += 1
@@ -89,7 +91,6 @@ class ViewController: UIViewController {
         nextQuestion()
         
     }
-    
     
 }
 
