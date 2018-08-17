@@ -74,9 +74,9 @@ class ViewController: UIViewController {
     
     func updateLabels() {
         
-        numberOfQuestionLabel.text = "\(questionNumber) / 13"
+        numberOfQuestionLabel.text = "\(questionNumber) / \(questionArray.list.count)"
         questionView.text = questionArray.list[questionNumber - 1].questionText
-        levelBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber)
+        levelBar.frame.size.width = (view.frame.size.width / CGFloat(questionArray.list.count)) * CGFloat(questionNumber)
         
     }
     
@@ -96,6 +96,7 @@ class ViewController: UIViewController {
         
         questionNumber = 0
         score = 0
+        scoreLabel.text = "Score: \(score)"
         shuffleQuestionArray()
         nextQuestion()
         
