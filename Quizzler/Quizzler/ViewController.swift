@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberOfQuestionLabel: UILabel!
     @IBOutlet weak var levelBar: UIView!
     @IBOutlet weak var questionView: UITextView!
+    @IBOutlet weak var barRightConst: NSLayoutConstraint!
     
     var questionNumber: Int = 0
     var score: Int = 0
@@ -25,6 +26,11 @@ class ViewController: UIViewController {
         
         update()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        barRightConst.constant = (view.frame.size.width - (view.frame.size.width / CGFloat(questionArray.list.count)))
     }
 
     override func didReceiveMemoryWarning() {
